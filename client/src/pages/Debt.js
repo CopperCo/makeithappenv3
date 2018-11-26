@@ -31,6 +31,7 @@ class Debts extends Component {
     totalDebt: 0,
     totalMinPay: 0
   };
+
   // componentDidMount() {
   //   this.loadDebts();
   // }
