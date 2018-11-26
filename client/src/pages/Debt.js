@@ -134,9 +134,11 @@ class Debts extends Component {
     for (let i = 0; i < debtData.length; i++) {
       // get a total of all existing minimum monthly payments
       totalMinPay += debtData[i].mthlypay;
+      console.log('totalmin' + totalMinPay);
 
       // get the current amount of all total debt owing
       totalDebt += debtData[i].balance;
+      console.log('totalDebt' + totalDebt);
     }
 
     this.setState({
