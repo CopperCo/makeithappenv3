@@ -1,3 +1,3 @@
 module.exports = {
-  Dream: require("./dream")
+  Dream: require('./dream')
 };

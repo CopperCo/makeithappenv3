@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   Card,
   CardBody,
@@ -9,19 +9,19 @@ import {
   Input,
   Row,
   Col
-} from "reactstrap";
-import BudgetTable from "../compontents/Table/BudgetTable";
+} from 'reactstrap';
+import BudgetTable from '../compontents/Table/BudgetTable';
 // import { List, ListItem } from "../compontents/List";
 // import { Link } from "react-router-dom";
 
-import API from "../utils/API";
+import API from '../utils/API';
 
 class Dreams extends Component {
   state = {
     dreams: [],
-    name: "",
-    targetDate: "",
-    estimatedAmount: ""
+    name: '',
+    targetDate: '',
+    estimatedAmount: ''
   };
 
   componentDidMount() {
@@ -33,9 +33,9 @@ class Dreams extends Component {
       .then(res => {
         this.setState({
           dreams: res.data,
-          name: "",
-          targetDate: "",
-          estimatedAmount: ""
+          name: '',
+          targetDate: '',
+          estimatedAmount: ''
         });
         console.log(res);
       })
@@ -80,7 +80,7 @@ class Dreams extends Component {
       })
         .then(res => {
           this.loadDreams();
-          console.log("data saved");
+          console.log('data saved');
         })
         .catch(err => console.log(err));
     }
@@ -88,58 +88,58 @@ class Dreams extends Component {
 
   dreamData = [
     {
-      id: "1",
-      dreamName: "Dream1",
-      estimatedAmont: "2000",
-      targetDate: "2019-02-02",
-      priority: "High"
+      id: '1',
+      dreamName: 'Dream1',
+      estimatedAmont: '2000',
+      targetDate: '2019-02-02',
+      priority: 'High'
     },
     {
-      id: "2",
-      dreamName: "Dream2",
-      estimatedAmont: "4000",
-      targetDate: "2019-02-02",
-      priority: "High"
+      id: '2',
+      dreamName: 'Dream2',
+      estimatedAmont: '4000',
+      targetDate: '2019-02-02',
+      priority: 'High'
     }
   ];
 
   render() {
     return (
       <div>
-        <h1 className="text-center"> Lets Manage Your Dreams </h1>
+        <h1 className='text-center'> Lets Manage Your Dreams </h1>
 
         <Row>
-          <Col sm="6">
+          <Col sm='6'>
             <Card>
               <CardBody>
                 <CardTitle>Input New Dream</CardTitle>
                 <Form>
                   <FormGroup>
-                    <Label for="dreamName">Name</Label>
+                    <Label for='dreamName'>Name</Label>
                     <Input
                       value={this.state.name}
                       onChange={this.handleInputChange}
-                      name="name"
-                      placeholder="Name (required)"
+                      name='name'
+                      placeholder='Name (required)'
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="estimatedAmont">Estimated Amount</Label>
+                    <Label for='estimatedAmont'>Estimated Amount</Label>
                     <Input
                       value={this.state.estimatedAmount}
                       onChange={this.handleInputChange}
-                      name="estimatedAmount"
-                      placeholder="Estimated Amount (Required)"
+                      name='estimatedAmount'
+                      placeholder='Estimated Amount (Required)'
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="targetDate">Target Date</Label>
+                    <Label for='targetDate'>Target Date</Label>
                     <Input
                       value={this.state.targetDate}
-                      type="date"
-                      name="targetDate"
-                      id="targetDate"
-                      placeholder="DD/MM/YYYY"
+                      type='date'
+                      name='targetDate'
+                      id='targetDate'
+                      placeholder='DD/MM/YYYY'
                       onChange={this.handleInputChange}
                     />
                   </FormGroup>
@@ -160,7 +160,7 @@ class Dreams extends Component {
               </CardBody>
             </Card>
           </Col>
-          <Col sm="6">
+          <Col sm='6'>
             <Card>
               <CardBody>
                 {/* <BudgetTable
@@ -170,7 +170,7 @@ class Dreams extends Component {
                 /> */}
                 {this.state.dreams.length ? (
                   <BudgetTable
-                    title="Your Dreams"
+                    title='Your Dreams'
                     // tableData={this.state.dreams}
                     tableData={this.state.dreams}
                   />
