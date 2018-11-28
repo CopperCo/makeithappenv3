@@ -13,7 +13,7 @@ const dreamSchema = Schema({
   },
   targetDate: {
     type: Date,
-    required: true
+    required: false
   },
   minMonthlySavings: {
     type: Number,

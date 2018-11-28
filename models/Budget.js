@@ -7,6 +7,10 @@ const budgetSchema = Schema({
     type: String,
     required: true
   },
+  amount: {
+    type: Number,
+    required: true
+  },
   frequency: {
     type: String,
     required: true
@@ -15,8 +19,8 @@ const budgetSchema = Schema({
     type: Date,
     required: true
   },
-  totalIncome: {
-    type: Number,
+  category: {
+    type: String,
     required: true
   }
 });
