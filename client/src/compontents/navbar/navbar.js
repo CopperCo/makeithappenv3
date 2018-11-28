@@ -42,7 +42,7 @@ export default class Makeithappennav extends React.Component {
                 <Link to="/debt">Add Debt</Link>
               </NavItem>
               <NavItem>
-                <Link to="/dream">Add Dream</Link>
+                <Link to="/dreams">Add Dream</Link>
               </NavItem>
               <NavItem>
                 <Link to="/loginsignup">Sign Up | Login </Link>
