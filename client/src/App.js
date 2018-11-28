@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Makeithappennav from './compontents/navbar/navbar';
+import Makeithappennav from './components/navbar/navbar';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Main from './pages/Main';
 import Budget from './pages/Budget';

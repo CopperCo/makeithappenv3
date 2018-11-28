@@ -37,8 +37,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Define API routes here
-app.use(routes(app));
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/makeithappen');
+// app.use(routes(app));
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/makeithappen');
 
 // Send every other request to the React app
 // Define any API routes before this runs
