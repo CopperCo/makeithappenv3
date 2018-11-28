@@ -1,8 +1,8 @@
-import React from "react";
-import "./navbar.css";
-import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from "reactstrap";
+import React from 'react';
+import './navbar.css';
+import { Collapse, Navbar, NavbarToggler, Nav, NavItem } from 'reactstrap';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default class Makeithappennav extends React.Component {
   // This line replaces the constructor above and is the new ES6 syntax.
@@ -25,7 +25,7 @@ export default class Makeithappennav extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar light expand="md">
           <Link to="/">
             <img src="/images/logo.png" alt="Make It Happen" />
           </Link>

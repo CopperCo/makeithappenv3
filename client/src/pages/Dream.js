@@ -10,7 +10,7 @@ import {
   Row,
   Col
 } from 'reactstrap';
-import BudgetTable from '../compontents/Table/BudgetTable';
+import BudgetTable from '../components/Table/BudgetTable';
 
 class Dream extends Component {
   state = {
