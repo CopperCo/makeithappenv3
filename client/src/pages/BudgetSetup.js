@@ -9,8 +9,8 @@ import {
   // Label,
   // Input
 } from 'reactstrap';
-import BudgetTable from '../compontents/Table/BudgetTable';
-import FormComp from '../compontents/Form/Form';
+import BudgetTable from '../components/Table/BudgetTable';
+import FormComp from '../components/Form/Form';
 
 // import Jumbotron from '../../components/Jumbotron';
 class BudgetSetup extends Component {

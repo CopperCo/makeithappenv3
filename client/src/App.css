@@ -1,3 +1,25 @@
 .App {
   text-align: center;
 }
+
+.navbar {
+  background-color: lightgray;
+}
+
+.nav-item a {
+  margin: 5px;
+  color: white;
+  text-transform: capitalize;
+}
+
+.loginSignUpPage {
+  margin: 25px;
+}
+
+.signUpForm,
+.loginForm {
+  background-color: beige;
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 10px 15px 16px -5px rgba(173, 173, 173, 1);
+}
