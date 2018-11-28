@@ -32,6 +32,28 @@ class Debts extends Component {
     totalMinPay: 0
   };
 
+  constructor() {
+    super();
+
+    this.state = {
+      strategy: '',
+      debtStrategy: ''
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      strategy: event.target.value
+    });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   // componentDidMount() {
   //   this.loadDebts();
   // }
@@ -96,7 +118,7 @@ class Debts extends Component {
     let debtData = [
       {
         debtname: 'Car Loan',
-        balance: 12000,
+        amount: 12000,
         interest: 7.0,
         frequency: 'monthly',
         mthlypay: 485.0,
@@ -104,28 +126,28 @@ class Debts extends Component {
       },
       {
         debtname: 'Mortgage',
-        balance: 200000,
+        amount: 200000,
         interest: 5.0,
         frequency: 'monthly',
         mthlypay: 584.0
       },
       {
         debtname: 'Big screen TV',
-        balance: 3000,
+        amount: 3000,
         interest: 21.99,
         frequency: 'monthly',
         mthlypay: 249.0
       },
       {
         debtname: 'Student Loan',
-        balance: 22000,
+        amount: 22000,
         interest: 5.0,
         frequency: 'monthly',
         mthlypay: 315.0
       },
       {
         debtname: 'Snowmobile Loan',
-        balance: 6000,
+        amount: 6000,
         interest: 8.0,
         frequency: 'monthly',
         mthlypay: 267.0
@@ -138,13 +160,14 @@ class Debts extends Component {
       console.log('totalmin' + totalMinPay);
 
       // get the current amount of all total debt owing
-      totalDebt += debtData[i].balance;
+      totalDebt += debtData[i].amount;
       console.log('totalDebt' + totalDebt);
     }
 
     this.setState({
       totalDebt: totalDebt,
       totalMinPay: totalMinPay
+      //monthsRemaining: monthsRemaining
     });
 
     let monthsRemaining =
@@ -154,7 +177,7 @@ class Debts extends Component {
   debtData1 = [
     {
       debtname: 'Car Loan',
-      balance: 12000,
+      amount: 12000,
       interest: 7.0,
       frequency: 'monthly',
       mthlypay: 485.0,
@@ -162,28 +185,28 @@ class Debts extends Component {
     },
     {
       debtname: 'Mortgage',
-      balance: 200000,
+      amount: 200000,
       interest: 5.0,
       frequency: 'monthly',
       mthlypay: 584.0
     },
     {
       debtname: 'Big screen TV',
-      balance: 3000,
+      amount: 3000,
       interest: 21.99,
       frequency: 'monthly',
       mthlypay: 249.0
     },
     {
       debtname: 'Student Loan',
-      balance: 22000,
+      amount: 22000,
       interest: 5.0,
       frequency: 'monthly',
       mthlypay: 315.0
     },
     {
       debtname: 'Snowmobile Loan',
-      balance: 6000,
+      amount: 6000,
       interest: 8.0,
       frequency: 'monthly',
       mthlypay: 267.0
@@ -285,6 +308,7 @@ class Debts extends Component {
               {' '}
               You will be in debt for {this.state.monthsRemaining} months.
             </h3>
+            {console.log('MR = ' + this.state.monthsRemaining)}
           </Col>
         </Row>
         <Col>
