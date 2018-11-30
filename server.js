@@ -7,13 +7,13 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // this is our MongoDB database
-const dbRoute =
-  'mongodb://' +
-  process.env.DB_USER +
-  ':' +
-  process.env.DB_PASS +
-  '@' +
-  process.env.DB_HOST;
+const dbRoute = 'mongodb://localhost:27017/makeithappen';
+// 'mongodb://' +
+// process.env.DB_USER +
+// ':' +
+// process.env.DB_PASS +
+// '@' +
+// process.env.DB_HOST;
 
 // connects our back end code with the database
 mongoose.connect(
