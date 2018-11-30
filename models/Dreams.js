@@ -17,7 +17,7 @@ const dreamSchema = Schema({
   },
   minMonthlySavings: {
     type: Number,
-    required: true
+    required: false
   }
 });
 
