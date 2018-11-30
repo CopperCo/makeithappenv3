@@ -7,15 +7,6 @@ const path = require('path');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// this is our MongoDB database
-// const dbRoute =
-//   'mongodb://' +
-//   process.env.DB_USER +
-//   ':' +
-//   process.env.DB_PASS +
-//   '@' +
-//   process.env.DB_HOST;
-
 // connects our back end code with the database
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost:27017/makeithappen',
@@ -37,9 +28,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 // Define API routes here
-// require('./routes/signin')(app);
 app.use(routes);
-// app.use('/signin', signInRoute);
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get('*', (req, res) => {
