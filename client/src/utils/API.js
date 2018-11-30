@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export default {
+
   // Gets all debts
   getDebts: function() {
     return axios.get('/api/debts');
@@ -16,5 +17,6 @@ export default {
   // Saves a debt to the database
   saveDebt: function(debtData) {
     return axios.post('/api/debts', debtData);
+
   }
 };

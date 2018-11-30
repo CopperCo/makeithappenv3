@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Main from './pages/Main';
 import Budget from './pages/Budget';
 import BudgetSetup from './pages/BudgetSetup';
-import Dream from './pages/Dream';
+import Dreams from './pages/Dreams';
 import Debt from './pages/Debt';
 import LoginSignup from './pages/LoginSignup';
 
@@ -21,12 +21,12 @@ class App extends Component {
         <div>
           <Makeithappennav />
           <Switch>
-            <Route exact path="/" component={Main} />
-            <Route exact path="/budget" component={Budget} />
-            <Route exact path="/budgetsetup" component={BudgetSetup} />
-            <Route exact path="/debt" component={Debt} />
-            <Route exact path="/dream" component={Dream} />
-            <Route exact path="/loginsignup" component={LoginSignup} />
+            <Route exact path='/' component={Main} />
+            <Route exact path='/budget' component={Budget} />
+            <Route exact path='/budgetsetup' component={BudgetSetup} />
+            <Route exact path='/debt' component={Debt} />
+            <Route exact path='/dreams' component={Dreams} />
+            <Route exact path='/loginsignup' component={LoginSignup} />
           </Switch>
         </div>
       </Router>
