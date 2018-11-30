@@ -25,27 +25,33 @@ export default class Makeithappennav extends React.Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD:client/src/compontents/navbar/navbar.js
+        <Navbar color='light' light expand='md'>
+          <Link to='/'>
+            <img src='/images/logo.png' alt='Make It Happen' />
+=======
         <Navbar light expand="md">
           <Link to="/">
             <img src="/images/logo.png" alt="Make It Happen" />
+>>>>>>> cf1c83ef5022c993004bd4505e3082b412436d93:client/src/components/navbar/navbar.js
           </Link>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav className='ml-auto' navbar>
               <NavItem>
-                <Link to="/budgetsetup">Setup</Link>
+                <Link to='/budgetsetup'>Setup</Link>
               </NavItem>
               <NavItem>
-                <Link to="/budget">Budget</Link>
+                <Link to='/budget'>Budget</Link>
               </NavItem>
               <NavItem>
-                <Link to="/debt">Add Debt</Link>
+                <Link to='/debt'>Add Debt</Link>
               </NavItem>
               <NavItem>
-                <Link to="/dream">Add Dream</Link>
+                <Link to='/dreams'>Add Dream</Link>
               </NavItem>
               <NavItem>
-                <Link to="/loginsignup">Sign Up | Login </Link>
+                <Link to='/loginsignup'>Sign Up | Login </Link>
               </NavItem>
             </Nav>
           </Collapse>
