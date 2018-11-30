@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 const Schema = mongoose.Schema;
 
 //Create Schema
 const userSchema = Schema({
-  _id: Schema.Types.ObjectId,
+  // _id: Schema.Types.ObjectId,
   username: {
     type: String,
     required: true
@@ -31,6 +33,12 @@ const userSchema = Schema({
 userSchema.methods.generateHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
+
+// userSchema.methods.genSalt(saltRounds, function(err, salt) {
+//   return bcrypt.hash(password, salt, function(err, hash) {
+
+//   })
+// })
 
 userSchema.methods.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
