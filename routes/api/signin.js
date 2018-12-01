@@ -191,6 +191,15 @@ router.get('/account/logout', (req, res, next) => {
     (err, sessions) => {
       if (err) {
         console.log(err);
+        return res.send({
+          success: false,
+          message: 'Error: Server error'
+        });
+      } else {
+        return res.send({
+          success: true,
+          message: 'Good'
+        });
       }
     }
   );
