@@ -8,7 +8,7 @@ class StrategyPicker extends Component {
 
     this.state = {
       strategy: '',
-      debtStrategy:''
+      debtStrategy: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -91,11 +91,9 @@ class StrategyPicker extends Component {
           Make your choice
         </button>
       </form>
-
-      
     );
   }
-  DebtStrategy = {this.state.strategy};
+  DebtStrategy = { this: state.strategy };
 }
 
 React.render(<StrategyPicker />, document.getElementById('app'));
