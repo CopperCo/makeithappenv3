@@ -40,5 +40,21 @@ export default {
   // Saves a debt to the database
   saveDebt: function(debtData) {
     return axios.post('/api/debts', debtData);
+  },
+  // Gets all dreams
+  getDreams: function() {
+    return axios.get("/api/dreams");
+  },
+  // Gets the dream with the given id
+  getDream: function(id) {
+    return axios.get("/api/dreams/" + id);
+  },
+  // Deletes the dream with the given id
+  deleteDream: function(id) {
+    return axios.delete("/api/dreams/" + id);
+  },
+  // Saves a dream to the database
+  saveDream: function(dreamData) {
+    return axios.post("/api/dreams", dreamData);
   }
 };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Container,
   Card,
   CardBody,
   CardTitle,
@@ -10,6 +11,7 @@ import {
   Row,
   Col
 } from 'reactstrap';
+import Hero from '../components/Hero/Hero';
 import BudgetTable from '../components/Table/BudgetTable';
 // import { List, ListItem } from "../components/List";
 // import { Link } from "react-router-dom";
@@ -21,7 +23,9 @@ class Dreams extends Component {
     dreams: [],
     name: '',
     targetDate: '',
-    estimatedAmount: ''
+    estimatedAmount: '',
+    background:
+      'url(https://res.cloudinary.com/mrs-k/image/upload/c_scale,e_blur:174,w_2147/v1543647914/beach.jpg) fixed'
   };
 
   componentDidMount() {
@@ -106,81 +110,85 @@ class Dreams extends Component {
   render() {
     return (
       <div>
-        <h1 className="text-center"> Lets Manage Your Dreams </h1>
+        <Hero
+          title="Lets Manage Your Dreams"
+          background={this.state.background}
+        />
+        <Container>
+          <Row>
+            <Col sm="6">
+              <Card>
+                <CardBody>
+                  <CardTitle>Input New Dream</CardTitle>
+                  <Form>
+                    <FormGroup>
+                      <Label for="dreamName">Name</Label>
+                      <Input
+                        value={this.state.name}
+                        onChange={this.handleInputChange}
+                        name="name"
+                        placeholder="Name (required)"
+                      />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="estimatedAmont">Estimated Amount</Label>
+                      <Input
+                        value={this.state.estimatedAmount}
+                        onChange={this.handleInputChange}
+                        name="estimatedAmount"
+                        placeholder="Estimated Amount (Required)"
+                      />
+                    </FormGroup>
+                    <FormGroup>
+                      <Label for="targetDate">Target Date</Label>
+                      <Input
+                        value={this.state.targetDate}
+                        type="date"
+                        name="targetDate"
+                        id="targetDate"
+                        placeholder="DD/MM/YYYY"
+                        onChange={this.handleInputChange}
+                      />
+                    </FormGroup>
 
-        <Row>
-          <Col sm="6">
-            <Card>
-              <CardBody>
-                <CardTitle>Input New Dream</CardTitle>
-                <Form>
-                  <FormGroup>
-                    <Label for="dreamName">Name</Label>
-                    <Input
-                      value={this.state.name}
-                      onChange={this.handleInputChange}
-                      name="name"
-                      placeholder="Name (required)"
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="estimatedAmont">Estimated Amount</Label>
-                    <Input
-                      value={this.state.estimatedAmount}
-                      onChange={this.handleInputChange}
-                      name="estimatedAmount"
-                      placeholder="Estimated Amount (Required)"
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="targetDate">Target Date</Label>
-                    <Input
-                      value={this.state.targetDate}
-                      type="date"
-                      name="targetDate"
-                      id="targetDate"
-                      placeholder="DD/MM/YYYY"
-                      onChange={this.handleInputChange}
-                    />
-                  </FormGroup>
-
-                  <button
-                    disabled={
-                      !(
-                        this.state.name &&
-                        this.state.targetDate &&
-                        this.state.estimatedAmount
-                      )
-                    }
-                    onClick={this.handleFormSubmit}
-                  >
-                    Submit
-                  </button>
-                </Form>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col sm="6">
-            <Card>
-              <CardBody>
-                {/* <BudgetTable
+                    <button
+                      disabled={
+                        !(
+                          this.state.name &&
+                          this.state.targetDate &&
+                          this.state.estimatedAmount
+                        )
+                      }
+                      onClick={this.handleFormSubmit}
+                    >
+                      Submit
+                    </button>
+                  </Form>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col sm="6">
+              <Card>
+                <CardBody>
+                  {/* <BudgetTable
                   title="Your Dreams"
                   // tableData={this.state.dreams}
                   tableData={this.state}
                 /> */}
-                {this.state.dreams.length ? (
-                  <BudgetTable
-                    title="Your Dreams"
-                    // tableData={this.state.dreams}
-                    tableData={this.state.dreams}
-                  />
-                ) : (
-                  <h3>No Results to Display</h3>
-                )}
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+                  {this.state.dreams.length ? (
+                    <BudgetTable
+                      title="Your Dreams"
+                      // tableData={this.state.dreams}
+                      tableData={this.state.dreams}
+                    />
+                  ) : (
+                    <h3>No Results to Display</h3>
+                  )}
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
