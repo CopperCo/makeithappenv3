@@ -1,8 +1,27 @@
 import React, { Component } from 'react';
-// import Jumbotron from '../../components/Jumbotron';
+import {
+  Container,
+  Row,
+  Col
+  // Button,
+  // Form,
+  // FormGroup,
+  // Label,
+  // Input
+} from 'reactstrap';
+import LogInSignUpForm from '../components/LoginSignUpComp/LogInSignUpForm';
+
 class LoginSignup extends Component {
   render() {
-    return <h1> this is a the Login Signup page</h1>;
+    return (
+      <Container className="loginSignUpPage">
+        <Row>
+          <Col md="12">
+            <LogInSignUpForm />
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 }
 
