@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+// import Jumbotron from '../components/Jumbotron';
 // import BudgetTable from "../components/Table/BudgetTable";
 
 class Budget extends Component {

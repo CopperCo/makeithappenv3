@@ -12,7 +12,8 @@ import {
 import BudgetTable from '../components/Table/BudgetTable';
 import FormComp from '../components/Form/Form';
 
-// import Jumbotron from '../../components/Jumbotron';
+import API from '../utils/API';
+
 class BudgetSetup extends Component {
   state = [
     {
@@ -23,39 +24,73 @@ class BudgetSetup extends Component {
     }
   ];
 
+  componentDidMount() {
+    this.loadBudget();
+  }
+
+  loadBudget = () => {
+    API.getBudget()
+      .then(res => {
+        this.setState({
+          name: res.data,
+          amount: '',
+          frequency: '',
+          date: ''
+        });
+        console.log(res);
+      })
+      .catch(err => console.log(err));
+  };
+
+  deleteIncome = id => {
+    API.deleteIncome(id)
+      .then(res => this.loadBudget())
+      .catch(err => console.log(err));
+  };
+
+  deleteExpense = id => {
+    API.deleteExpense(id)
+      .then(res => this.loadBudget())
+      .catch(err => console.log(err));
+  };
+
   handleInputChange = event => {
-    let value = event.target.value;
-    const name = event.target.name;
+    const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
 
   handleFormSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
     event.preventDefault();
-
-    console.log(event);
-
-    this.setState({
-      Name: '',
-      Amount: '',
-      Frequency: '',
-      Date: ''
-    });
-    console.log('Button was clicked');
-    console.log(`Type: ${this.state.nameIncExp}`);
-    console.log(`Amount: ${this.state.amount}`);
-    console.log(`Freq: ${this.state.frequency}`);
-    console.log(`Cat: ${this.state.category}`);
-    console.log(`Date: ${this.state.date}`);
-
-    if (this.state.category === 'income') {
-      console.log(`income pushed`);
-      return this.setState.push(this.incomeData);
-    } else {
-      console.log(`exp pushed`);
-      return this.setState.push(this.expData);
+    if (
+      this.state.name &&
+      this.state.amount &&
+      this.state.frequency &&
+      this.state.date &&
+      this.state.category
+    ) {
+      const inputDate = new Date(this.state.targetDate);
+      const curDate = new Date();
+      let months;
+      months = (inputDate.getFullYear() - curDate.getFullYear()) * 12;
+      months -= curDate.getMonth() + 1;
+      months += inputDate.getMonth();
+      months = months <= 0 ? 0 : months + 1;
+      console.log(months);
+      let monthlySaving = this.state.estimatedAmount / months;
+      alert(monthlySaving);
+      API.saveBudget({
+        Name: this.state.name,
+        Amount: this.state.amount,
+        Frequency: this.state.frequency,
+        Date: this.state.date
+      })
+        .then(res => {
+          this.loadBudget();
+          console.log('data saved');
+        })
+        .catch(err => console.log(err));
     }
   };
 
