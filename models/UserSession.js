@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 //Create Schema
 const UserSessionSchema = Schema({
   userId: {
-    type: Number,
-    default: -1
+    type: String,
+    default: ''
   },
   timestamp: {
     type: Date,
