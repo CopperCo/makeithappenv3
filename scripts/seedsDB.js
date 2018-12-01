@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const db = require('../models');
+
 // This file empties the collection and inserts the items below
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/makeithappen');
+
 const incomeSeed = [
   {
     id: 1,
@@ -48,6 +50,31 @@ db.Income.remove({})
   });
 db.Expense.remove({})
   .then(() => db.Income.collection.insertMany(expensesSeed))
+
+
+// Dream
+
+
+const dreamSeed = [
+  {
+    name: 'Dream1',
+    targetDate: '2019-02-02',
+
+    estimatedAmont: '2000'
+    // priority: "High"
+  },
+  {
+    name: 'Dream2',
+    targetDate: '2019-02-02',
+
+    estimatedAmont: '4000'
+    // priority: "High"
+  }
+];
+
+db.Dream.remove({})
+  .then(() => db.Dream.collection.insertMany(dreamSeed))
+
   .then(data => {
     console.log(data.result.n + ' records inserted!');
     process.exit(0);

@@ -1,11 +1,7 @@
 import axios from 'axios';
 export default {
-  // Gets all debt
-  getDebts: function() {
-    return axios.get('/api/debt');
-  },
 
-  // Gets budget
+   // Gets budget
   getBudget: function() {
     return axios.get('/api/budgetsetup');
   },
@@ -32,5 +28,17 @@ export default {
   // Saves an expense to the database
   saveExpense: function(expenseData) {
     return axios.post('/api/budgetsetup', expenseData);
+  },
+  // Gets one specific debt with the given id
+  getDebt: function(id) {
+    return axios.get('/api/debts/' + id);
+  },
+  // Deletes one debt with the given id
+  deleteDebt: function(id) {
+    return axios.delete('/api/debts/' + id);
+  },
+  // Saves a debt to the database
+  saveDebt: function(debtData) {
+    return axios.post('/api/debts', debtData);
   }
 };
