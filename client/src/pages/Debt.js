@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  // FormGroup,
-  // Label,
-  Input
-  // Jumbotron,
-  // ListGroup,
-  // ListGroupItem
-} from 'reactstrap';
+import { Container, Row, Col, Button, Form, Input } from 'reactstrap';
+import Hero from '../components/Hero/Hero';
 // import { Link } from 'react-router-dom';
 import BudgetTable from '../components/Table/BudgetTable';
 
 class Debts extends Component {
   state = {
+    background:
+      'url(https://res.cloudinary.com/mrs-k/image/upload/c_scale,e_blur:174,w_2065/v1543648073/bills.jpg) fixed',
     debts: [],
     currentDebt: {
       debtname: '',
@@ -215,67 +206,72 @@ class Debts extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col size="md-6">
-            <h1>Add new Debt</h1>
-            <Form>
-              <Input
-                value={this.state.debtname}
-                onChange={this.handleInputChange}
-                name="debtname"
-                placeholder="Name of Debt (required)"
-              />
-              <Input
-                value={this.state.amount}
-                onChange={this.handleInputChange}
-                name="amount"
-                placeholder="Original Amount Owing (required)"
-              />
-              <Input
-                value={this.state.interestrate}
-                onChange={this.handleInputChange}
-                name="interestrate"
-                placeholder="Interest Rate (required)"
-              />
-              <Input
-                value={this.state.compounding}
-                onChange={this.handleInputChange}
-                name="compounding"
-                placeholder="Frequency Interest Compounds (required)"
-              />
-              <Input
-                value={this.state.minimumpayment}
-                onChange={this.handleInputChange}
-                name="minimumpayment"
-                placeholder="Minimum Payment Amount (required)"
-              />
-              <Input
-                value={this.state.alternateamount}
-                onChange={this.handleInputChange}
-                name="alternateamount"
-                placeholder="alternateamount"
-              />
-              <Button
-                disabled={
-                  !(
-                    this.state.debtname &&
-                    this.state.amount &&
-                    this.state.interestrate &&
-                    this.state.compounding &&
-                    this.state.minimumpayment &&
-                    this.state.alternateamount
-                  )
-                }
-                onClick={this.handleFormSubmit}
-              >
-                Submit New Debt
-              </Button>
-            </Form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <h1>Current Debts on record</h1>
-            {/* {this.state.debts.length ? (
+      <div>
+        <Hero
+          title="Lets Manage Your Debts"
+          background={this.state.background}
+        />
+        <Container>
+          <Row>
+            <Col size="md-6">
+              <h1>Add new Debt</h1>
+              <Form>
+                <Input
+                  value={this.state.debtname}
+                  onChange={this.handleInputChange}
+                  name="debtname"
+                  placeholder="Name of Debt (required)"
+                />
+                <Input
+                  value={this.state.amount}
+                  onChange={this.handleInputChange}
+                  name="amount"
+                  placeholder="Original Amount Owing (required)"
+                />
+                <Input
+                  value={this.state.interestrate}
+                  onChange={this.handleInputChange}
+                  name="interestrate"
+                  placeholder="Interest Rate (required)"
+                />
+                <Input
+                  value={this.state.compounding}
+                  onChange={this.handleInputChange}
+                  name="compounding"
+                  placeholder="Frequency Interest Compounds (required)"
+                />
+                <Input
+                  value={this.state.minimumpayment}
+                  onChange={this.handleInputChange}
+                  name="minimumpayment"
+                  placeholder="Minimum Payment Amount (required)"
+                />
+                <Input
+                  value={this.state.alternateamount}
+                  onChange={this.handleInputChange}
+                  name="alternateamount"
+                  placeholder="alternateamount"
+                />
+                <Button
+                  disabled={
+                    !(
+                      this.state.debtname &&
+                      this.state.amount &&
+                      this.state.interestrate &&
+                      this.state.compounding &&
+                      this.state.minimumpayment &&
+                      this.state.alternateamount
+                    )
+                  }
+                  onClick={this.handleFormSubmit}
+                >
+                  Submit New Debt
+                </Button>
+              </Form>
+            </Col>
+            <Col size="md-6 sm-12">
+              <h1>Current Debts on record</h1>
+              {/* {this.state.debts.length ? (
               <ListGroup>
                 {this.state.debts.map(debt => (
                   <ListGroupItem key={debt._id}>
@@ -294,89 +290,90 @@ class Debts extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )} */}
-            <BudgetTable title="Your Debts" tableData={this.debtData1} />
-            {console.log('this is debtData: ' + this.debtData1)}
+              <BudgetTable title="Your Debts" tableData={this.debtData1} />
+              {console.log('this is debtData: ' + this.debtData1)}
+            </Col>
+          </Row>
+          <Row>
+            <Col size="md-6">
+              <h3>How much longer will I be in debt?</h3>
+              <Button onClick={this.handleCalculations}>
+                Get my debt report
+              </Button>
+              <h5>
+                {' '}
+                You will be in debt for {this.state.monthsRemaining} months.
+              </h5>
+              {console.log('MR = ' + this.state.monthsRemaining)}
+            </Col>
+          </Row>
+          <Col>
+            <form onSubmit={this.handleSubmit}>
+              <h2 className="title">HOW DO YOU WANT TO PAY DOWN YOUR DEBT?</h2>
+
+              <p>
+                Method # 1 - Snowball method - start with paying off the
+                smallest debt, and once that debt is paid off, add your minimum
+                payment to pay off the next smallest debt.
+              </p>
+              <p>
+                Method # 2 - Avalanche method - start with paying off the
+                largest debt, and once that debt is paid off, add your minimum
+                payment to pay off the next largest debt.
+              </p>
+              <p>
+                Method # 3 - Highest Interest method - start with paying off the
+                debt with the highest interest rate, which saves you long term
+                on interest costs. Once that debt is paid off, apply that
+                minimum payment to help pay off the debt with the next highest
+                interest rate.
+              </p>
+              <br />
+              <h2>Which method do you want to use to pay off debt?</h2>
+              <ul className="noBulletPoints">
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="Snowball"
+                      checked={this.state.strategy === 'Snowball'}
+                      onChange={this.handleChange}
+                    />
+                    Snowball
+                  </label>
+                </li>
+
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="Avalanche"
+                      checked={this.state.strategy === 'Avalanche'}
+                      onChange={this.handleChange}
+                    />
+                    Avalanche
+                  </label>
+                </li>
+
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      value="Highest Interest"
+                      checked={this.state.strategy === 'Highest_Interest'}
+                      onChange={this.handleChange}
+                    />
+                    Highest Interest
+                  </label>
+                </li>
+              </ul>
+              <button type="submit" className="submit-button">
+                Make your choice
+              </button>
+            </form>
           </Col>
-        </Row>
-        <Row>
-          <Col size="md-6">
-            <h1>How much longer will I be in debt?</h1>
-            <Button onClick={this.handleCalculations}>
-              Get my debt report
-            </Button>
-            <h3>
-              {' '}
-              You will be in debt for {this.state.monthsRemaining} months.
-            </h3>
-            {console.log('MR = ' + this.state.monthsRemaining)}
-          </Col>
-        </Row>
-        <Col>
-          <form onSubmit={this.handleSubmit}>
-            <p className="title">HOW DO YOU WANT TO PAY DOWN YOUR DEBT?</p>
-
-            <h3>
-              Method # 1 - Snowball method - start with paying off the smallest
-              debt, and once that debt is paid off, add your minimum payment to
-              pay off the next smallest debt.
-            </h3>
-            <h3>
-              Method # 2 - Avalanche method - start with paying off the largest
-              debt, and once that debt is paid off, add your minimum payment to
-              pay off the next largest debt.
-            </h3>
-            <h3>
-              Method # 3 - Highest Interest method - start with paying off the
-              debt with the highest interest rate, which saves you long term on
-              interest costs. Once that debt is paid off, apply that minimum
-              payment to help pay off the debt with the next highest interest
-              rate.
-            </h3>
-            <br />
-            <h2>Which method do you want to use to pay off debt?</h2>
-            <ul>
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    value="Snowball"
-                    checked={this.state.strategy === 'Snowball'}
-                    onChange={this.handleChange}
-                  />
-                  Snowball
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    value="Avalanche"
-                    checked={this.state.strategy === 'Avalanche'}
-                    onChange={this.handleChange}
-                  />
-                  Avalanche
-                </label>
-              </li>
-
-              <li>
-                <label>
-                  <input
-                    type="radio"
-                    value="Highest Interest"
-                    checked={this.state.strategy === 'Highest_Interest'}
-                    onChange={this.handleChange}
-                  />
-                  Highest Interest
-                </label>
-              </li>
-            </ul>
-            <button type="submit" className="submit-button">
-              Make your choice
-            </button>
-          </form>
-        </Col>
-      </Container>
+        </Container>
+      </div>
     );
   }
 }

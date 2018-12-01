@@ -9,20 +9,26 @@ import {
   // Label,
   // Input
 } from 'reactstrap';
+import Hero from '../components/Hero/Hero';
 import BudgetTable from '../components/Table/BudgetTable';
 import FormComp from '../components/Form/Form';
 
 import API from '../utils/API';
 
 class BudgetSetup extends Component {
-  state = [
-    {
-      Name: '',
-      Amount: '',
-      Frequency: '',
-      Date: ''
-    }
-  ];
+  state = {
+    background:
+      'url(https://res.cloudinary.com/mrs-k/image/upload/c_scale,e_blur:267,w_2027/v1543648864/budget.jpg) fixed',
+    color: '#fff',
+    budget: [
+      {
+        Name: '',
+        Amount: '',
+        Frequency: '',
+        Date: ''
+      }
+    ]
+  };
 
   componentDidMount() {
     this.loadBudget();
@@ -64,27 +70,17 @@ class BudgetSetup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (
-      this.state.name &&
-      this.state.amount &&
-      this.state.frequency &&
-      this.state.date &&
-      this.state.category
+      this.state.budget.name &&
+      this.state.budget.amount &&
+      this.state.budget.frequency &&
+      this.state.budget.date &&
+      this.state.budget.category
     ) {
-      const inputDate = new Date(this.state.targetDate);
-      const curDate = new Date();
-      let months;
-      months = (inputDate.getFullYear() - curDate.getFullYear()) * 12;
-      months -= curDate.getMonth() + 1;
-      months += inputDate.getMonth();
-      months = months <= 0 ? 0 : months + 1;
-      console.log(months);
-      let monthlySaving = this.state.estimatedAmount / months;
-      alert(monthlySaving);
       API.saveBudget({
-        Name: this.state.name,
-        Amount: this.state.amount,
-        Frequency: this.state.frequency,
-        Date: this.state.date
+        Name: this.state.budget.name,
+        Amount: this.state.budget.amount,
+        Frequency: this.state.budget.frequency,
+        Date: this.state.budget.date
       })
         .then(res => {
           this.loadBudget();
@@ -130,17 +126,24 @@ class BudgetSetup extends Component {
   render() {
     console.log(this.state.key);
     return (
-      <Container>
-        <Row>
-          <Col xs="6">
-            <FormComp />
-          </Col>
-          <Col xs="6">
-            <BudgetTable title="Your Incomes" tableData={this.incomeData} />
-            <BudgetTable title="Your Expenses" tableData={this.expData} />
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <Hero
+          title="It's Budgeting Time"
+          background={this.state.background}
+          color={this.state.color}
+        />
+        <Container>
+          <Row>
+            <Col xs="6">
+              <FormComp />
+            </Col>
+            <Col xs="6">
+              <BudgetTable title="Your Incomes" tableData={this.incomeData} />
+              <BudgetTable title="Your Expenses" tableData={this.expData} />
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }
