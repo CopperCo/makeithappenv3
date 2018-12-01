@@ -11,7 +11,7 @@ const UserSessionSchema = Schema({
     type: Date,
     default: Date.now()
   },
-  isDelete: {
+  isDeleted: {
     type: Boolean,
     default: false
   }
