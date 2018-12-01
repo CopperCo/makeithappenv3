@@ -170,8 +170,8 @@ class Debts extends Component {
       //monthsRemaining: monthsRemaining
     });
 
-    let monthsRemaining =
-      totalDebt / (totalMinPay + this.debtData[0].alternateamount);
+    // let monthsRemaining =
+    //   totalDebt / (totalMinPay + this.debtData[0].alternateamount);
   };
 
   debtData1 = [

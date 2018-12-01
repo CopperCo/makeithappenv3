@@ -10,8 +10,8 @@ import {
   Row,
   Col
 } from 'reactstrap';
-import BudgetTable from '../compontents/Table/BudgetTable';
-// import { List, ListItem } from "../compontents/List";
+import BudgetTable from '../components/Table/BudgetTable';
+// import { List, ListItem } from "../components/List";
 // import { Link } from "react-router-dom";
 
 import API from '../utils/API';
@@ -106,40 +106,40 @@ class Dreams extends Component {
   render() {
     return (
       <div>
-        <h1 className='text-center'> Lets Manage Your Dreams </h1>
+        <h1 className="text-center"> Lets Manage Your Dreams </h1>
 
         <Row>
-          <Col sm='6'>
+          <Col sm="6">
             <Card>
               <CardBody>
                 <CardTitle>Input New Dream</CardTitle>
                 <Form>
                   <FormGroup>
-                    <Label for='dreamName'>Name</Label>
+                    <Label for="dreamName">Name</Label>
                     <Input
                       value={this.state.name}
                       onChange={this.handleInputChange}
-                      name='name'
-                      placeholder='Name (required)'
+                      name="name"
+                      placeholder="Name (required)"
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for='estimatedAmont'>Estimated Amount</Label>
+                    <Label for="estimatedAmont">Estimated Amount</Label>
                     <Input
                       value={this.state.estimatedAmount}
                       onChange={this.handleInputChange}
-                      name='estimatedAmount'
-                      placeholder='Estimated Amount (Required)'
+                      name="estimatedAmount"
+                      placeholder="Estimated Amount (Required)"
                     />
                   </FormGroup>
                   <FormGroup>
-                    <Label for='targetDate'>Target Date</Label>
+                    <Label for="targetDate">Target Date</Label>
                     <Input
                       value={this.state.targetDate}
-                      type='date'
-                      name='targetDate'
-                      id='targetDate'
-                      placeholder='DD/MM/YYYY'
+                      type="date"
+                      name="targetDate"
+                      id="targetDate"
+                      placeholder="DD/MM/YYYY"
                       onChange={this.handleInputChange}
                     />
                   </FormGroup>
@@ -160,7 +160,7 @@ class Dreams extends Component {
               </CardBody>
             </Card>
           </Col>
-          <Col sm='6'>
+          <Col sm="6">
             <Card>
               <CardBody>
                 {/* <BudgetTable
@@ -170,7 +170,7 @@ class Dreams extends Component {
                 /> */}
                 {this.state.dreams.length ? (
                   <BudgetTable
-                    title='Your Dreams'
+                    title="Your Dreams"
                     // tableData={this.state.dreams}
                     tableData={this.state.dreams}
                   />
